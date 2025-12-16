@@ -1,0 +1,28 @@
+plugins {
+    id 'java'//java 프로젝트로 만들어준다.
+    id 'org.springframework.boot' version '3.3.4'//springboot 전용 기능 추가
+    id 'io.spring.dependency-management' version '1.1.6'//springboot 버전 자동으로 맞춰줘서 dependencies에 안써도됌
+}
+
+group = 'com.jojoldu.book'//프로젝트의 패키지 이름
+version = '1.0-SNAPSHOT'//프로젝트 버전
+
+java {//자바 21로 컴파일 하겠다는 선언 로컬자바가 여러개여도 21버전만을 사용
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()//라이브러리는 mavenCentral에서 받겠다.
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'//실제 애플리케이션 실행에 필요한 의존성
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'//테스트 코드에서만 사용하는 의존성
+    //버전을 안쓴 이유는 spring.dependency-managemant가 호환되는 버전을 정해주기 때문.
+}
+
+test {
+    useJUnitPlatform()//test는 Junit 5를 사용하겠다는 설정
+}
