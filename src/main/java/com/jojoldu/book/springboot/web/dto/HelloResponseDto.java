@@ -10,7 +10,7 @@ public class HelloResponseDto {
     private final String name;
     private final int amount;
 
-    /* RequiredArgsConstructor가 만드는 생성자
+    /* 2026-01-05 RequiredArgsConstructor가 만드는 생성자
     * HelloResponseDto dto = new HelloResponseDto(String name, int amount) {
     *   this.name = name;
     *   this.amount = amount;
