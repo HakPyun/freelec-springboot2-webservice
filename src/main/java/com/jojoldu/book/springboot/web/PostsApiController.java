@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PostsApiController {
 
-    private final PostsService postsService;
+    private final PostsService postsService;//서비스 등록 안되어있으면 컨트롤러 등록 실패
 
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto) {

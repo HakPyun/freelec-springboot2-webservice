@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(controllers = HelloController.class)//이 순간 MockMvc가 빈으로 등록
 public class HelloControllerTest {
 
-    @Autowired//컨트롤러에 등록된 빈들을 알아서 가져와준다.
+    @Autowired//컨테이너에 등록된 빈들을 알아서 가져와준다.
     private MockMvc mvc;
 
     @Test
