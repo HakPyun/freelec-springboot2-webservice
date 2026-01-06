@@ -8,7 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-//2026-01-05 HakPyun@Gmail.com에서 깃허브계정으로 변경하였음.
+
 @WebMvcTest(controllers = HelloController.class)//이 순간 MockMvc가 빈으로 등록
 public class HelloControllerTest {
 

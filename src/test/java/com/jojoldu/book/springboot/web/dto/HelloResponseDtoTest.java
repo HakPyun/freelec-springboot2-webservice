@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HelloResponseDtoTest {
-//2026-01-06
+
     @Test
     public void 롬복_기능_테스트() {
         //given
