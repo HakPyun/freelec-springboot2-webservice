@@ -43,4 +43,9 @@ public class Posts {
     * new User(null, 0)이 호출되지 기본 생성자가 호출되는 건 아니다.
     *
     */
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
