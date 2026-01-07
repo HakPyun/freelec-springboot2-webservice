@@ -11,6 +11,8 @@ public class PostsSaveRequestDto {
     private String title;
     private String content;
     private String author;
+
+    //Builder선언 시 다른데에서 .builder().build()를 통해 생성해낼 수 있음.
     @Builder
     public PostsSaveRequestDto(String title, String content, String author) {
         this.title = title;

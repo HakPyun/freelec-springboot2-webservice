@@ -26,6 +26,7 @@ public class PostsApiControllerTest {
     @LocalServerPort
     private int port;
 
+    //테스트 코드에서 HTTP 요청을 하고 객체를 받아올 때 쓰인다.
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -85,6 +86,7 @@ public class PostsApiControllerTest {
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
         //when
+        //exchange는 범용 메서드(PUT요청이 아님)
         ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
 
         //then

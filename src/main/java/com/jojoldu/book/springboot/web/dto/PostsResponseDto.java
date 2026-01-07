@@ -3,7 +3,7 @@ package com.jojoldu.book.springboot.web.dto;
 import com.jojoldu.book.springboot.domain.posts.Posts;
 import lombok.Getter;
 
-@Getter
+@Getter//객체 -> JSON 직렬화만 필요해서 NoArgsConstructor 필요 없음.
 public class PostsResponseDto {
 
     private Long id;

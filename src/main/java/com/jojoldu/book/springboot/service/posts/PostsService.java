@@ -21,6 +21,7 @@ public class PostsService {
 
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto) {
+        //익명 함수 optional값이기 때문에 null이면 바로 예외처리
         Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
 
         posts.update(requestDto.getTitle(), requestDto.getContent());
