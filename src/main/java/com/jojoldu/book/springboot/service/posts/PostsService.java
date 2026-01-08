@@ -14,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class PostsService {
     private final PostsRepository postsRepository;//등록되어있는 리포지토리를 매개로 받음 없으면 빈 등록 X
 
-    @Transactional
+    @Transactional//한 메서드 내에서 진행되는 과정, commit까지가 하나의 단위가 된다. 이 때 엔티티 관련 작업을 하는 곳을 영속성 컨텍스트라고 한다.
+    //toEntity를 하는 이유는 PostsRepository에서 JpaRepository<Posts, Long>이기 때문이다.
     public Long save(PostsSaveRequestDto requestDto) {
         return postsRepository.save(requestDto.toEntity()).getId();
     }
@@ -29,6 +30,7 @@ public class PostsService {
         return id;
     }
 
+    //조회에는 딱히 Transactional 어노테이션이 필요없다. 쓰기 작업이 없어서라고 생각하면 될듯.
     public PostsResponseDto findById(Long id) {
         Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
 
