@@ -84,10 +84,11 @@ public class PostsApiControllerTest {
 
         String url = "http://localhost:" + port + "/api/v1/posts/"+ updateId;
 
+        // 클라이언트에서 요청 Controller에서 RequestBody
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
         //when
-        //exchange는 범용 메서드(PUT요청이 아님)
+        //exchange는 범용 메서드(PUT요청이 아님) 서버에서 응답용 컨트롤러에서 update동작은 Long타입을 반환하게 되어있음. 그래서 Long타입
         ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
 
         //then
