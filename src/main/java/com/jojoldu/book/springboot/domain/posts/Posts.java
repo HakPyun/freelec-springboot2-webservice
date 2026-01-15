@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor//JPA 프록시를 위해 사용
 @Entity
 public class Posts extends BaseTimeEntity {
 
