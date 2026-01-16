@@ -28,6 +28,10 @@ dependencies {
     // Mustache
     implementation 'org.springframework.boot:spring-boot-starter-mustache'
 
+    // Spring Security & Oauth2
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+
     // H2 Database (인메모리 DB)
     runtimeOnly 'com.h2database:h2'
 
