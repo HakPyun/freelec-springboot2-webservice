@@ -7,6 +7,8 @@ import lombok.Getter;
 
 import java.util.Map;
 
+
+//어떤 Provider로 로그인했는지 보고 그에 맞는 변환 메서드를 선택하여 데이터 처리
 @Getter
 public class OAuthAttributes {
     private Map<String, Object> attributes;
@@ -24,10 +26,12 @@ public class OAuthAttributes {
         this.picture = picture;
     }
 
+    //registrationId를 통해 구글, 네이버, 카카오 구분 / 객체 필드의 수정이나 정의가 아니므로 static 선언하여 클래스 메서드
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
         return ofGoogle(userNameAttributeName, attributes);
     }
 
+    //객체 생성의 규칙이므로 static을 사용 보통 static이 없으면 인스턴스 메서드인데 인스턴스 메서드는 객체가 생성되어야 할 수 있음.
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
         return OAuthAttributes.builder()
                 .name((String) attributes.get("name"))

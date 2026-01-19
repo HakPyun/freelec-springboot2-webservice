@@ -27,7 +27,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
-        OAuth2User oAuth2User = delegate.loadUser(userRequest);
+        OAuth2User oAuth2User = delegate.loadUser(userRequest);//인터페이스에 있는 loadUser를 재정의 한 것.
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
         String usernameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
@@ -44,9 +44,10 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 attributes.getNameAttributeKey());
     }
 
+    //DB에 회원 정보가 있는지 없는지를 따지고 없으면 새로 저장. 있으면 업데이트.
     private User saveOrUpdate(OAuthAttributes attributes) {
         User user = userRepository.findByEmail(attributes.getEmail())
-                .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
+                .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))//Optional의 map은 결과가 있으면 map 실행 없으면 orElse 실행
                 .orElse(attributes.toEntity());
 
         return userRepository.save(user);
