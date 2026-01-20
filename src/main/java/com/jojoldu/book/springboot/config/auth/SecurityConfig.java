@@ -15,6 +15,7 @@ public class SecurityConfig {
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
+    //시큐리티필터체인은 컨트롤러에 도달하기전에 거쳐가는 필터(그래서 로그인 컨트롤러가 따로 없는 것)
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http

@@ -24,10 +24,11 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     private final UserRepository userRepository;
     private final HttpSession httpSession;
 
+    //인터페이스에 있는 loadUser를 재정의 한 것. userRequest는 로그인이 성공하면 스프링 시큐리티가 직접 만들어서 넣어줌..
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
-        OAuth2User oAuth2User = delegate.loadUser(userRequest);//인터페이스에 있는 loadUser를 재정의 한 것.
+        OAuth2User oAuth2User = delegate.loadUser(userRequest);//DefaultOAuth2UserService객체 내에 있는 loadUser를 사용한 것.
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
         String usernameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
@@ -36,6 +37,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         User user = saveOrUpdate(attributes);
 
+        //httpSession 설정
         httpSession.setAttribute("user", new SessionUser(user));
 
         return new DefaultOAuth2User(
